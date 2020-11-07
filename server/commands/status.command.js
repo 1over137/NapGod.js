@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-const UserModel = require('./../models/user.model');
-const config = require('../../config.json');
-const { findMember } = require('./find');
-const { executeFunction, minToTZ, bold } = require('./utility');
-
-module.exports = {
-  processGetTZ: function (command, message, args, dry = false) {
-=======
 const { URL } = require('url');
 const _ = require('lodash');
 const UserModel = require('./../models/user.model');
@@ -17,9 +8,8 @@ const { executeFunction, dateToStringSimple } = require('./utility');
 
 module.exports = {
   processGet: function (command, message, args, dry = false) {
->>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
-    if (command === 'gettz') {
-      console.log('GETTZ', args);
+    if (command === 'status') {
+      console.log('STATUS', args);
       executeFunction(get, message, args, dry);
       return true;
     }
@@ -27,19 +17,13 @@ module.exports = {
   },
 };
 
-<<<<<<< HEAD
-async function get(message, args, dry) {
-  const memberIdentifier = message.content
-    .slice(config.prefix.length + 'gettz'.length , message.content.length)
-=======
 function pad(number) {
   if (number<=99) { number = ("0"+number).slice(-2); }
   return number;
 }
 async function get(message, args, dry) {
   const memberIdentifier = message.content
-    .slice(config.prefix.length + 5, message.content.length)
->>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
+    .slice(config.prefix.length + 6, message.content.length)
     .trim();
   console.log('INFO:  memberIdentifier: ', memberIdentifier);
   let member;
@@ -59,27 +43,12 @@ async function get(message, args, dry) {
       if (!dry) {
         await message.channel.send(member.msg);
       }
-<<<<<<< HEAD
-      return;
-=======
->>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
     } else {
       console.log(
         `INFO:  user found ${member.value.user.tag} -> ${member.value.id}`
       );
     }
   }
-<<<<<<< HEAD
-  const userDB = await UserModel.findOne({ id: member.value.user.id });
-  if(userDB && userDB.timezone != null){
-  let tzmin = userDB.timezone;
-    message.channel.send("Timezone for " +
-      bold(member.value.displayName) + " is `"
-      + minToTZ(tzmin) + "`");
-  }
-  else{
-    message.channel.send("Error: User " + bold(member.value.displayName) + " has not set a timezone.")
-=======
   if (member.found) {
     const userDB = await UserModel.findOne({ id: member.value.user.id });
     tzmin = userDB.timezone;
@@ -91,11 +60,8 @@ async function get(message, args, dry) {
       sign = "+";
     }
     tzmin = Math.abs(tzmin);
-    hours = Math.floor(tzmin/60);
-    minutes = tzmin - hours*60;
-    message.channel.send("Timezone for " +
-      member.value.displayName + " is `"
-      + "UTC" + sign + pad(hours) + ":" + pad(minutes) + "`");
->>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
+    date = new Date(new Date().getTime() + tzmin * 60000)
+    message.channel.send("Time for "  +
+      member.value.displayName + " is `"+ dateToStringSimple(date) + "`");
   }
 }
