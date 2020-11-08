@@ -79,10 +79,13 @@ function bold(s){
   return "**" + s + "**";
 }
 
+<<<<<<< HEAD
 function tick(s){
   return "`" + s + "`";
 }
 
+=======
+>>>>>>> 5d4a578 (Add function minToTZ to utility.js)
 function minToTZ(tzmin){
   let sign = tzmin < 0 ? "-" : "+";
   tzmin = Math.abs(tzmin);
@@ -90,6 +93,7 @@ function minToTZ(tzmin){
   minutes = tzmin - hours * 60;
   return "UTC" + sign + pad(hours) + ":" + pad(minutes)
 }
+<<<<<<< HEAD
 
 function parseTZstr(s){
   let tzhours;
@@ -128,6 +132,8 @@ function parseTZstr(s){
   }
   return 60 * (tzhours * tzsign);
 }
+=======
+>>>>>>> 5d4a578 (Add function minToTZ to utility.js)
 
 module.exports = {
   cutAt,
@@ -138,7 +144,11 @@ module.exports = {
   toReadableString,
   pad,
   bold,
+<<<<<<< HEAD
   tick,
   minToTZ,
   parseTZstr
+=======
+  minToTZ
+>>>>>>> 5d4a578 (Add function minToTZ to utility.js)
 };
