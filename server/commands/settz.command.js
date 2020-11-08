@@ -1,11 +1,15 @@
 const UserModel = require("./../models/user.model");
 <<<<<<< HEAD
+<<<<<<< HEAD
 const { minToTZ, bold, parseTZstr } = require('./utility');
 
 module.exports = {
   processSetTZ: (function(command, message, args, dry=false) {
 =======
 const { minToTZ } = require('./utility');
+=======
+const { minToTZ, bold } = require('./utility');
+>>>>>>> 69034de (Add next sleep countdown in +status)
 
 module.exports = {
   processSetTZ: (async function(command, message, args, dry=false) {
@@ -44,6 +48,7 @@ Example: `+settz 60` for `UTC+01:00`. Use negative numbers for the Western Hemis
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 function pad(number) {
   return ("0" + number).slice(-2);
@@ -53,6 +58,8 @@ function bold(s){
   return "**" + s + "**";
 }
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+>>>>>>> 69034de (Add next sleep countdown in +status)
 
 function buildUserInstance(args, author) {
   let userUpdate = {
@@ -68,11 +75,14 @@ function buildUserInstance(args, author) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 //Returns true if both schedule and napchart are set
 //silent supresses dicord text output only, changes still take place
 //(provided dry=false)
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+>>>>>>> 69034de (Add next sleep countdown in +status)
 async function settz(args, message, dry, author, member, silent) {
   complete = true;
   let msg = "";

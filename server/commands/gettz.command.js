@@ -32,7 +32,6 @@ module.exports = {
     return false;
   },
 };
-console.log("GETTZ IS HERE")
 
 <<<<<<< HEAD
 <<<<<<< HEAD

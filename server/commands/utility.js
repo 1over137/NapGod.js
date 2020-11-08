@@ -80,12 +80,18 @@ function bold(s){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 69034de (Add next sleep countdown in +status)
 function tick(s){
   return "`" + s + "`";
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 5d4a578 (Add function minToTZ to utility.js)
+=======
+>>>>>>> 69034de (Add next sleep countdown in +status)
 function minToTZ(tzmin){
   let sign = tzmin < 0 ? "-" : "+";
   tzmin = Math.abs(tzmin);
@@ -145,10 +151,14 @@ module.exports = {
   pad,
   bold,
 <<<<<<< HEAD
+<<<<<<< HEAD
   tick,
   minToTZ,
   parseTZstr
 =======
+=======
+  tick,
+>>>>>>> 69034de (Add next sleep countdown in +status)
   minToTZ
 >>>>>>> 5d4a578 (Add function minToTZ to utility.js)
 };
