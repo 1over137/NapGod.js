@@ -1,12 +1,16 @@
 const UserModel = require('./../models/user.model');
 const config = require('../../config.json');
 const { findMember } = require('./find');
+<<<<<<< HEAD
 const request = require('request');
 const { executeFunction, dateToStringSimple, minToTZ, bold, h_n_m, tick } = require('./utility');
 
 const api_url = config.nc_endpoint;
 
 let align = arg => { return arg.padEnd('Next sleep'.length + 4, ' ') };
+=======
+const { executeFunction, dateToStringSimple, minToTZ, bold } = require('./utility');
+>>>>>>> 43be71f (Clean up code, add error handling)
 
 module.exports = {
   processGetTZ: function (command, message, args, dry = false) {
@@ -24,6 +28,10 @@ async function get(message, args, dry) {
   const memberIdentifier = message.content
     .slice(config.prefix.length + 'status'.length , message.content.length)
     .trim();
+<<<<<<< HEAD
+=======
+  console.log('INFO:  memberIdentifier: ', memberIdentifier);
+>>>>>>> 43be71f (Clean up code, add error handling)
   let member;
   if (memberIdentifier === '') {
     member = { value: message.member, found: true };
@@ -36,7 +44,10 @@ async function get(message, args, dry) {
       message.guild,
       message.mentions.users
     );
+<<<<<<< HEAD
     console.log('INFO:  memberIdentifier: ', memberIdentifier);
+=======
+>>>>>>> 43be71f (Clean up code, add error handling)
     if (!member.found) {
       console.log(member.msg);
       if (!dry) {
@@ -44,6 +55,7 @@ async function get(message, args, dry) {
       }
       return;
     } else {
+<<<<<<< HEAD
       console.log(`INFO:  user found ${member.value.user.tag} -> ${member.value.id}`);
     }
   }
@@ -202,3 +214,21 @@ function isAsleep(sleeps, now){
   }
   return false;
 }
+=======
+      console.log(
+        `INFO:  user found ${member.value.user.tag} -> ${member.value.id}`
+      );
+    }
+  }
+  const userDB = await UserModel.findOne({ id: member.value.user.id });
+  if(userDB && userDB.timezone){
+    let tzmin = userDB.timezone;
+    date = new Date(new Date().getTime() + tzmin * 60000)
+    message.channel.send("Time for "  +
+      bold(member.value.displayName) + " is `"+ dateToStringSimple(date) + " " + minToTZ(tzmin) + "`");
+  }
+  else{
+    message.channel.send("Error: User " + bold(member.value.displayName) + " has not set a timezone.")
+  }
+}
+>>>>>>> 43be71f (Clean up code, add error handling)

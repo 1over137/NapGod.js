@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const UserModel = require('./../models/user.model');
 const config = require('../../config.json');
 const { findMember } = require('./find');
@@ -9,15 +10,20 @@ module.exports = {
 =======
 const { URL } = require('url');
 const _ = require('lodash');
+=======
+>>>>>>> 43be71f (Clean up code, add error handling)
 const UserModel = require('./../models/user.model');
-const { getOrGenImg, makeNapChartImageUrl } = require('./../imageCache');
 const config = require('../../config.json');
 const { findMember } = require('./find');
-const { executeFunction, dateToStringSimple } = require('./utility');
+const { executeFunction, minToTZ, bold } = require('./utility');
 
 module.exports = {
+<<<<<<< HEAD
   processGet: function (command, message, args, dry = false) {
 >>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
+=======
+  processGetTZ: function (command, message, args, dry = false) {
+>>>>>>> 43be71f (Clean up code, add error handling)
     if (command === 'gettz') {
       console.log('GETTZ', args);
       executeFunction(get, message, args, dry);
@@ -26,7 +32,9 @@ module.exports = {
     return false;
   },
 };
+console.log("GETTZ IS HERE")
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 async function get(message, args, dry) {
   const memberIdentifier = message.content
@@ -40,6 +48,11 @@ async function get(message, args, dry) {
   const memberIdentifier = message.content
     .slice(config.prefix.length + 5, message.content.length)
 >>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
+=======
+async function get(message, args, dry) {
+  const memberIdentifier = message.content
+    .slice(config.prefix.length + 'gettz'.length , message.content.length)
+>>>>>>> 43be71f (Clean up code, add error handling)
     .trim();
   console.log('INFO:  memberIdentifier: ', memberIdentifier);
   let member;
@@ -60,15 +73,20 @@ async function get(message, args, dry) {
         await message.channel.send(member.msg);
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
       return;
 =======
 >>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
+=======
+      return;
+>>>>>>> 43be71f (Clean up code, add error handling)
     } else {
       console.log(
         `INFO:  user found ${member.value.user.tag} -> ${member.value.id}`
       );
     }
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
   const userDB = await UserModel.findOne({ id: member.value.user.id });
   if(userDB && userDB.timezone != null){
@@ -97,5 +115,16 @@ async function get(message, args, dry) {
       member.value.displayName + " is `"
       + "UTC" + sign + pad(hours) + ":" + pad(minutes) + "`");
 >>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
+=======
+  const userDB = await UserModel.findOne({ id: member.value.user.id });
+  if(userDB && userDB.timezone){
+  let tzmin = userDB.timezone;
+    message.channel.send("Timezone for " +
+      bold(member.value.displayName) + " is `"
+      + minToTZ(tzmin) + "`");
+  }
+  else{
+    message.channel.send("Error: User " + bold(member.value.displayName) + " has not set a timezone.")
+>>>>>>> 43be71f (Clean up code, add error handling)
   }
 }
