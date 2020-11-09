@@ -12,8 +12,12 @@ const { minToTZ, bold } = require('./utility');
 >>>>>>> 69034de (Add next sleep countdown in +status)
 
 module.exports = {
+<<<<<<< HEAD
   processSetTZ: (async function(command, message, args, dry=false) {
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+  processSetTZ: (function(command, message, args, dry=false) {
+>>>>>>> 35a4d4d (Add sleep detection and wake countdown.)
     if (command === "settz") {
       if (args.length == 1) {
 	        author = message.author;
@@ -23,6 +27,7 @@ module.exports = {
 	           return false;
 	        }
 <<<<<<< HEAD
+<<<<<<< HEAD
 	        settz(args, message, dry, author, member, false);
         }
         else {
@@ -30,6 +35,9 @@ module.exports = {
 Example: `+settz UTC+1` or `+settz UTC+5:30` or `+settz UTC-4`";
 =======
 	        await settz(args, message, dry, author, member, false);
+=======
+	        settz(args, message, dry, author, member, false);
+>>>>>>> 35a4d4d (Add sleep detection and wake countdown.)
         }
         else {
 	        msg = "Bad input format. Use `+settz [offset from UTC in minutes]`\n\
