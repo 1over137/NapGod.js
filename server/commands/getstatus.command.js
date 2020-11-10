@@ -230,8 +230,11 @@ function isAsleep(sleeps, now){
   const userDB = await UserModel.findOne({ id: member.value.user.id });
   if(userDB && userDB.timezone){
     let tzmin = userDB.timezone;
+    let schedule = userDB.currentScheduleName;
     let now = new Date(new Date().getTime() + tzmin * 60000)
     let msg = "Status for " + bold(member.value.displayName) + "\n";
+    let msg2 = "";
+
     msg += "```\n"
     msg += "Date:         "  + dateToStringSimple(now).slice(0,10);
     msg += "\nTime now:    "  + dateToStringSimple(now).slice(10,16);
@@ -253,14 +256,28 @@ function isAsleep(sleeps, now){
       }
       msg += "\n```";
       message.channel.send(msg);
+      if (!userDB.currentScheduleChart){
+        if(schedule.includes("Random")){
+        message.channel.send("Eww! This user is on " + bold(schedule) + " schedule!\nNot even Nap God knows when they will sleep next.");
+      }
+        else if (schedule.includes("MAYL") || schedule.includes("X")){
+        message.channel.send("Wow! This user is on " + bold(schedule) + " schedule!\nNot even Nap God knows when they will sleep next.");
+      }
+      else{
+        message.channel.send("This user has not set a napchart, so Nap God cannot know when they will sleep next.");
+      }
     }
   else{
     message.channel.send("Error: User " + bold(member.value.displayName) + " has not set a timezone.")
   }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 43be71f (Clean up code, add error handling)
 =======
+=======
+}
+>>>>>>> f08e95d (Add messages to indicate that user has not set napchart in +status)
 
 
 async function getNapchart(username, napchartUrl) {
