@@ -1,6 +1,7 @@
 const UserModel = require("./../models/user.model");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const { minToTZ, bold, parseTZstr } = require('./utility');
 
 module.exports = {
@@ -10,6 +11,9 @@ const { minToTZ } = require('./utility');
 =======
 const { minToTZ, bold } = require('./utility');
 >>>>>>> 69034de (Add next sleep countdown in +status)
+=======
+const { minToTZ, bold, parseTZstr } = require('./utility');
+>>>>>>> d1feadd (Change +settz input format to standard expression)
 
 module.exports = {
 <<<<<<< HEAD
@@ -33,6 +37,7 @@ module.exports = {
         else {
 	        msg = "Bad input format. Use `+settz [UTC+/-XX]`\n\
 Example: `+settz UTC+1` or `+settz UTC+5:30` or `+settz UTC-4`";
+<<<<<<< HEAD
 =======
 	        await settz(args, message, dry, author, member, false);
 =======
@@ -43,6 +48,8 @@ Example: `+settz UTC+1` or `+settz UTC+5:30` or `+settz UTC-4`";
 	        msg = "Bad input format. Use `+settz [offset from UTC in minutes]`\n\
 Example: `+settz 60` for `UTC+01:00`. Use negative numbers for the Western Hemisphere.";;
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+>>>>>>> d1feadd (Change +settz input format to standard expression)
 	        console.log("MSG   : ", msg);
 	        if(!dry){message.channel.send(msg);}
           }
@@ -74,10 +81,14 @@ function buildUserInstance(args, author) {
     tag: author.tag,
     userName: author.username,
 <<<<<<< HEAD
+<<<<<<< HEAD
     timezone: parseTZstr(args[0])
 =======
     timezone: args[0]
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+    timezone: parseTZstr(args[0])
+>>>>>>> d1feadd (Change +settz input format to standard expression)
   };
   return userUpdate;
 }
@@ -98,12 +109,17 @@ async function settz(args, message, dry, author, member, silent) {
   console.log("CMD   : SETTZ");
   console.log("ARGS  : ", args);
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (!isValidTZ(parseTZstr(args[0]))) {
     message.channel.send("Error: Invalid timezone. Valid timezones are between `UTC-12:00` and `UTC+14:00`");
 =======
   if (!isValidTZ(args[0])) {
     message.channel.send("Error: Invalid timezone. Valid timezones are between `-720` (UTC-12:00) and `840` (UTC+14:00)");
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+  if (!isValidTZ(parseTZstr(args[0]))) {
+    message.channel.send("Error: Invalid timezone. Valid timezones are between `UTC-12:00` and `UTC+14:00`");
+>>>>>>> d1feadd (Change +settz input format to standard expression)
     return;
   }
   let userUpdate = buildUserInstance(args, author);
@@ -130,8 +146,12 @@ async function settz(args, message, dry, author, member, silent) {
       if(!dry&&!silent){message.channel.send("Something broke.  Call the fire brigade");}
       return;
     }
+<<<<<<< HEAD
     let tzmin = args[0];
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+    let tzmin = parseTZstr(args[0]);
+>>>>>>> d1feadd (Change +settz input format to standard expression)
     message.channel.send("Timezone for " +
       bold(member.displayName) + " set to `" +
       minToTZ(tzmin) + "`");
