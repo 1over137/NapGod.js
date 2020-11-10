@@ -267,10 +267,12 @@ function isAsleep(sleeps, now){
         message.channel.send("This user has not set a napchart, so Nap God cannot know when they will sleep next.");
       }
     }
+  }
   else{
     message.channel.send("Error: User " + bold(member.value.displayName) + " has not set a timezone.")
   }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 43be71f (Clean up code, add error handling)
@@ -278,6 +280,8 @@ function isAsleep(sleeps, now){
 =======
 }
 >>>>>>> f08e95d (Add messages to indicate that user has not set napchart in +status)
+=======
+>>>>>>> b77e1da (Fix broken brackets, Remove console.log statements)
 
 
 async function getNapchart(username, napchartUrl) {
@@ -387,8 +391,6 @@ function isAsleep(sleeps, now){
     starts.push(thisSleep);
     ends.push(thisWake);
   });
-  console.log(starts);
-  console.log(ends);
   for(i=0;i<starts.length;i++){
     if(starts[i] < now && ends[i] > now){
       return true;
