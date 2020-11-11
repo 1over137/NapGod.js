@@ -136,6 +136,7 @@ async function settz(args, message, dry, author, member, silent) {
     } catch (error) {
       console.log("error searching for User: ", error);
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (!dry&&!silent) {
         message.channel.send("Something broke.  Call the fire brigade");
       }
@@ -144,6 +145,11 @@ async function settz(args, message, dry, author, member, silent) {
     let tzmin = parseTZstr(args[0]);
 =======
       if(!dry&&!silent){message.channel.send("Something broke.  Call the fire brigade");}
+=======
+      if (!dry&&!silent) {
+        message.channel.send("Something broke.  Call the fire brigade");
+      }
+>>>>>>> 27b5180 (Clean up code)
       return;
     }
 <<<<<<< HEAD
@@ -157,6 +163,7 @@ async function settz(args, message, dry, author, member, silent) {
       minToTZ(tzmin) + "`");
 
     return result;
+<<<<<<< HEAD
 
 <<<<<<< HEAD
   }
@@ -165,6 +172,9 @@ async function settz(args, message, dry, author, member, silent) {
 function isValidTZ(tzmin) {
 =======
     result.save();
+=======
+    //result.save();
+>>>>>>> 27b5180 (Clean up code)
 
   }
 }

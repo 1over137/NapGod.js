@@ -143,7 +143,7 @@ function parseTZstr(s){
 
 function parseTZstr(s){
   let tzhours;
-  let tzsign;
+  let tzsign = 1;
   let tzhm = null;
   if (s.includes("UTC") || s.includes("utc")){
     s = s.slice(3);
@@ -152,15 +152,11 @@ function parseTZstr(s){
     s = s.slice(1);
   }
   if (s.startsWith("+")){
-    tzsign = 1;
     s = s.slice(1);
   }
   else if(s.startsWith("-")){
     tzsign = -1;
     s = s.slice(1);
-  }
-  else{
-    tzsign = 1;
   }
 
   if (s.includes(":")){

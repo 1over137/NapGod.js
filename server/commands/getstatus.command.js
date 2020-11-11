@@ -16,8 +16,12 @@ const { executeFunction, dateToStringSimple, minToTZ, bold } = require('./utilit
 const request = require('request');
 const { executeFunction, dateToStringSimple, minToTZ, bold, h_n_m, tick } = require('./utility');
 
+<<<<<<< HEAD
 const api_url = 'http://thumb.napchart.com:1771/api/';
 >>>>>>> 69034de (Add next sleep countdown in +status)
+=======
+const api_url = config.nc_endpoint;
+>>>>>>> 27b5180 (Clean up code)
 
 module.exports = {
   processGetTZ: function (command, message, args, dry = false) {
@@ -36,9 +40,12 @@ async function get(message, args, dry) {
     .slice(config.prefix.length + 'status'.length , message.content.length)
     .trim();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   console.log('INFO:  memberIdentifier: ', memberIdentifier);
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+>>>>>>> 27b5180 (Clean up code)
   let member;
   if (memberIdentifier === '') {
     member = { value: message.member, found: true };
@@ -52,9 +59,13 @@ async function get(message, args, dry) {
       message.mentions.users
     );
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log('INFO:  memberIdentifier: ', memberIdentifier);
 =======
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+    console.log('INFO:  memberIdentifier: ', memberIdentifier);
+>>>>>>> 27b5180 (Clean up code)
     if (!member.found) {
       console.log(member.msg);
       if (!dry) {
@@ -62,6 +73,7 @@ async function get(message, args, dry) {
       }
       return;
     } else {
+<<<<<<< HEAD
 <<<<<<< HEAD
       console.log(`INFO:  user found ${member.value.user.tag} -> ${member.value.id}`);
     }
@@ -225,10 +237,13 @@ function isAsleep(sleeps, now){
       console.log(
         `INFO:  user found ${member.value.user.tag} -> ${member.value.id}`
       );
+=======
+      console.log(`INFO:  user found ${member.value.user.tag} -> ${member.value.id}`);
+>>>>>>> 27b5180 (Clean up code)
     }
   }
   const userDB = await UserModel.findOne({ id: member.value.user.id });
-  if(userDB && userDB.timezone){
+  if (userDB && userDB.timezone) {
     let tzmin = userDB.timezone;
     let schedule = userDB.currentScheduleName;
     let now = new Date(new Date().getTime() + tzmin * 60000)
@@ -238,7 +253,7 @@ function isAsleep(sleeps, now){
     msg += "```\n"
     msg += "Date:         "  + dateToStringSimple(now).slice(0,10);
     msg += "\nTime now:    "  + dateToStringSimple(now).slice(10,16);
-    if(userDB.currentScheduleChart){
+    if (userDB.currentScheduleChart) {
       let url = userDB.currentScheduleChart;
       let nc = await getNapchart(member.value.user.tag, url);
       let sleeps = nc.sleeps.split(",");
@@ -256,19 +271,19 @@ function isAsleep(sleeps, now){
       }
       msg += "\n```";
       message.channel.send(msg);
-      if (!userDB.currentScheduleChart){
-        if(schedule.includes("Random")){
+      if (!userDB.currentScheduleChart) {
+        if (schedule.includes("Random")) {
         message.channel.send("Eww! This user is on " + bold(schedule) + " schedule!\nNot even Nap God knows when they will sleep next.");
       }
-        else if (schedule.includes("MAYL") || schedule.includes("X")){
+        else if (schedule.includes("MAYL") || schedule.includes("X")) {
         message.channel.send("Wow! This user is on " + bold(schedule) + " schedule!\nNot even Nap God knows when they will sleep next.");
       }
-      else{
+      else {
         message.channel.send("This user has not set a napchart, so Nap God cannot know when they will sleep next.");
       }
     }
   }
-  else{
+  else {
     message.channel.send("Error: User " + bold(member.value.displayName) + " has not set a timezone.")
   }
 }
@@ -311,7 +326,7 @@ function getNapchartPromise(napchartUrl) {
   return new Promise((resolve, reject) => {
     request(
       {
-        url: api_url + 'get?chartid=' + napchartUrl.split('/').pop(),
+        url: api_url + '/get?chartid=' + napchartUrl.split('/').pop(),
         json: true,
         headers: { 'User-Agent': 'request' },
       },
