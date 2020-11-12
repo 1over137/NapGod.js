@@ -164,6 +164,7 @@ async function settz(args, message, dry, author, member, silent) {
 
     return result;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
   }
@@ -175,12 +176,18 @@ function isValidTZ(tzmin) {
 =======
     //result.save();
 >>>>>>> 27b5180 (Clean up code)
+=======
+>>>>>>> 96c8802 (Fix bug with UTC+0; Use align function)
 
   }
 }
 
+<<<<<<< HEAD
 function isValidTZ(tzmin){
 >>>>>>> 43be71f (Clean up code, add error handling)
+=======
+function isValidTZ(tzmin) {
+>>>>>>> 96c8802 (Fix bug with UTC+0; Use align function)
   if (tzmin <= 840 && tzmin >= -720){
     return true;
   }

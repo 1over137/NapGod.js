@@ -116,7 +116,7 @@ async function get(message, args, dry) {
 >>>>>>> 0860310 (Add new commands: SETTZ, GETTZ, STATUS)
 =======
   const userDB = await UserModel.findOne({ id: member.value.user.id });
-  if(userDB && userDB.timezone){
+  if(userDB && userDB.timezone != null){
   let tzmin = userDB.timezone;
     message.channel.send("Timezone for " +
       bold(member.value.displayName) + " is `"
