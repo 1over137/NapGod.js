@@ -286,7 +286,7 @@ function isAsleep(sleeps, now){
       message.channel.send(msg);
   }
   else {
-    message.channel.send("Error: User " + bold(member.value.displayName) + " has not set a timezone.")
+    message.channel.send("Error: User " + bold(member.value.displayName) + " has not set a timezone. You can set a timezone with `+settz [timezone]`")
   }
 }
 <<<<<<< HEAD
