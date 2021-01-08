@@ -1,0 +1,85 @@
+module.exports = {
+   mechanics: `
+\`\`\`
+!biphasic
+!circadian
+!circadian-structure
+!cyclelength
+!darkperiod
+!dualcore
+!everyman
+!fzs
+!graveyard
+!genetics
+!latecore
+!melatonin
+!napaware
+!naplength
+!repartition
+!wake-time-programming
+\`\`\`
+`,
+   tips: `
+\`\`\`
+!alarms
+!dst
+!fallasleep
+!nap-eat
+!napaware
+!napspot
+!ns
+!oss
+!polyprep
+!recovery
+!sickness
+!skipnap
+!sleeptracker
+!smartalarms
+!stayawake
+!welcome
+\`\`\`
+   `,
+   symptoms: `
+\`\`\`
+!eyestrain
+!memory
+!secondwind
+\`\`\`
+   `,
+   scheduling: `
+\`\`\`
+!darkperiod
+!dayblock
+!discipline
+!graveyard
+!naplength
+!nightshift
+!non-reducing
+!solartime
+\`\`\`
+  `,
+    adaptation: `
+\`\`\`
+!adaptation
+!adapt-methods
+!adapt-success
+\`\`\`
+  `,
+   lifestyle: `
+\`\`\`
+!alcohol
+!caffeine
+!cannabis
+!diet
+!drugs
+!exercise
+!longterm
+!medical
+!melatonin
+!nicotine
+!sugar
+!travelling
+!underage
+\`\`\`
+`
+}

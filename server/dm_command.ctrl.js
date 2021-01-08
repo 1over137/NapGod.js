@@ -14,6 +14,7 @@ module.exports = {
     handled = false;
     //console.error("INFO  : ", c2)
     c2.forEach(fn => {
+      console.log(fn);
       handled = handled || fn(command, message, args, dry);
     });
     if(!handled){
